@@ -7,7 +7,7 @@ class Clock extends React.Component {
    */
 
   //shortcut used
-  state = { date: new Date(),local:'bn-BD' };
+  state = { date: new Date(), locale: "bn-BD" };
 
   componentDidMount() {
     this.clockTimer = setInterval(() => this.tick(), 1000);
@@ -22,23 +22,22 @@ class Clock extends React.Component {
     clearInterval(this.clockTimer);
   }
 
-  handleClick() {
-      //console.log('the button is Click');
-      this.setState({
-          local:'en-US'
-      })
-  }
+  handleClick = () => {
+    //console.log('the button is Click');
+    this.setState({
+      locale: "en-US",
+    });
+  };
 
   render() {
-      const {date,local}=this.state;
+    const { date, locale } = this.state;
+
     return (
       <div>
-          <h1 className="heading">
-        <span className="text">
-          Time: {date.toLocaleTimeString(local)}
-        </span>
-      </h1>
-      <button onClick={this.handleClick}>Click Here</button>
+        <h1 className="heading">
+          <span className="text">Time: {date.toLocaleTimeString(locale)}</span>
+        </h1>
+        <button onClick={this.handleClick}>Click Here</button>
       </div>
     );
   }
